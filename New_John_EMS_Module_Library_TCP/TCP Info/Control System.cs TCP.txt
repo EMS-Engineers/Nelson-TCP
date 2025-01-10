@@ -1,0 +1,49 @@
+--------------------LOAD AND CONFIG-----------------------------
+-Constructor
+-Event subscription, loads in sgd file for smart objects.
+
+-Init System
+-Calls Library TCP_Server_Start -> TCP_Listener -> Handler -> TCP_Server_Receive_Data...
+-... calls CS TCP_Server_Receive_Data -> calls Library EMS_Parse
+
+-Console Command: Load EMS Config file
+-Load EMS Handler: sets ip's, ports, and creates Camera and Room objects.
+
+
+--------------------TOUCH PANEL-----------------------------
+-Touchpanel comes online: Touchpanel_StatusChange updates backend labels and states
+
+-Touchpanel button press: triggers SmartObject_SigChange
+	-This handles page select and all camera functionality
+	-Takings Camera object and calls camera functions of EMS Library
+	-EMS Library code calls Control code TCP_Client_Send($"{{[Camera][Pan][{ip_address}][{speed}]}}");
+DESIGN: TP Click
+1. CS Camera Object | Library Camera Class
+2. CS Camera.Pan()  | Library.Pan()
+3. Library Pan()    | CS TCP Client
+4. CS TCP Client    | Library Client Connect/Send Data
+
+
+--------------------TCP SEND-----------------------------
+TCP_Client_Send()
+	-EMS_Client_Send
+TCP_Server_Send()
+	-TCP_Server_Send
+
+--------------------TCP RECEIVE-----------------------------
+
+TCP_Client_Receive_Data()
+	-Will call EMS Parse
+TCP_Server_Receive_Data()
+	-Will call EMS Parse
+
+
+--------------------EXTERNAL DEVICES-----------------------------
+
+Message Player functions:
+	-sends play, record, stop over ComPort to Player.
+	-sends ACK commands with CS TCP_Server_Send()
+
+Biamp functions: 
+	-sends route, unroute, preset, mute, unmute to Biamp Library Module
+	-sends ACK commands with CS TCP_Server_Send()

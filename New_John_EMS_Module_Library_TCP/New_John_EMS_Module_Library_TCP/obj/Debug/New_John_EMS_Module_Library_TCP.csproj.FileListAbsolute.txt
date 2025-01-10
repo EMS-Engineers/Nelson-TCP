@@ -1,0 +1,167 @@
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\ControlSystem.cs
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New_John_EMS_Module_Library_TCP.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New_John_EMS_Module_Library_TCP.pdb
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\BiampLibrary.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DM.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Fusion.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Gateways.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.GeneralIO.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Keypads.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Lighting.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Media.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Remotes.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Shades.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Thermostats.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UC.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UI.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New John EMS Library.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpAutoUpdateInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCloudClientInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCryptographyInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCustomAttributesInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCWSHelperInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpExchangeWebServices.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpHelperInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpNewtonsoft.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpOnvifInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpPro.exe
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpProgrammingInterfaces.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpReflectionInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpSQLHelperInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpTimerEventInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Renci.SshNet.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\netstandard.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\BiampLibrary.pdb
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DM.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Fusion.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Gateways.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.GeneralIO.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Keypads.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Lighting.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Media.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Remotes.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Shades.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Thermostats.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UC.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UI.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New John EMS Library.pdb
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpAutoUpdateInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCloudClientInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCryptographyInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCustomAttributesInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCWSHelperInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpExchangeWebServices.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpHelperInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpNewtonsoft.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpOnvifInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpPro.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpProgrammingInterfaces.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpReflectionInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpSQLHelperInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpTimerEventInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Renci.SshNet.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.csproj.CoreCompileInputs.cache
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.csproj.CopyComplete
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.pdb
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.csprojAssemblyReference.cache
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\ControlSystem.cs
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New_John_EMS_Module_Library_TCP.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New_John_EMS_Module_Library_TCP.pdb
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\BiampLibrary.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DM.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Fusion.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Gateways.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.GeneralIO.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Keypads.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Lighting.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Media.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Remotes.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Shades.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Thermostats.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UC.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UI.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New John EMS Library.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpAutoUpdateInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCloudClientInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCryptographyInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCustomAttributesInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCWSHelperInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpExchangeWebServices.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpHelperInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpNewtonsoft.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpOnvifInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpPro.exe
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpProgrammingInterfaces.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpReflectionInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpSQLHelperInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpTimerEventInterface.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Renci.SshNet.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\netstandard.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\BiampLibrary.pdb
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.DM.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Fusion.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Gateways.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.GeneralIO.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Keypads.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Lighting.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Media.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Remotes.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Shades.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.Thermostats.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UC.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Crestron.SimplSharpPro.UI.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\New John EMS Library.pdb
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpAutoUpdateInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCloudClientInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCryptographyInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCustomAttributesInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpCWSHelperInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpExchangeWebServices.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpHelperInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpNewtonsoft.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpOnvifInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpPro.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpProgrammingInterfaces.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpReflectionInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpSQLHelperInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\SimplSharpTimerEventInterface.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Renci.SshNet.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.csprojAssemblyReference.cache
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.csproj.CoreCompileInputs.cache
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.csproj.CopyComplete
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.dll
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\obj\Debug\New_John_EMS_Module_Library_TCP.pdb
+C:\repos\New_John_EMS_Module_Library_TCP\New_John_EMS_Module_Library_TCP\bin\Debug\EMS TS-1070 Template.sgd

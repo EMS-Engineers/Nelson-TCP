@@ -1,0 +1,67 @@
+Biamp_IP[1],192.168.254.15
+Biamp_IP[2],0.0.0.0
+Server_IP,192.168.254.59
+Server_Port,53125
+Paging_Matrix_Quantity,1
+Paging_Matrix_Offset,0
+Player_Offset,0
+Play_Delay,50
+Paging_Keyword,Spk
+Device_IP[1],10.10.10.155
+Device_IP[2],10.10.10.155
+Device_IP[3],10.10.10.155
+Device_IP[4],192.168.133.155
+Camera_IP[1],10.10.140.62:1
+Camera_IP[2],10.10.140.62:2
+Camera_IP[3],10.10.140.62:3
+Camera_IP[4],10.10.140.62:4
+Camera_IP[5],10.10.140.62:5
+Camera_IP[6],0.0.0.0
+Camera_IP[7],0.0.0.0
+Camera_IP[8],0.0.0.0
+Camera_IP[9],0.0.0.0
+Camera_IP[10],0.0.0.0
+Camera_IP[11],0.0.0.0
+Camera_IP[12],0.0.0.0
+Camera_IP[13],0.0.0.0
+Camera_IP[14],0.0.0.0
+Camera_IP[15],0.0.0.0
+Camera_Label[1],Cam 1
+Camera_Label[2],Cam 2
+Camera_Label[3],Cam 3
+Camera_Label[4],Cam 4
+Camera_Label[5],Cam 5
+Camera_Label[6],Conf A-1
+Camera_Label[7],Conf A-2
+Camera_Label[8],Conf B-1
+Camera_Label[9],Conf B-2
+Camera_Label[10],Stadium-1
+Camera_Label[11],Stadium-2
+Camera_Label[12],Conf C-1
+Camera_Label[13],Conf C-2
+Camera_Label[14],Debrief-1
+Camera_Label[15],Debrief-2
+Device_Label[1],SDI Switcher
+Device_Label[2],SDI Mux 1
+Device_Label[3],SDI Mux 2
+Device_Label[4],0410D CtrlA
+Device_Label[5],0410D CtrlB
+Device_Label[6],0413A ConfA
+Device_Label[7],0413B ConfB
+Device_Label[8],0405 Stadium
+Device_Label[9],0414 ConfC
+Device_Label[10],0410A Debrief
+Device_Label[11],Reception
+Room_Label[1],Room 1
+Room_Label[2],Room 2
+Room_Label[3],0413B ConfB
+Room_Label[4],0414 ConfC
+Room_Label[5],0410 SimA
+Room_Label[6],0411A SimB
+Room_Label[7],0410A Debrief
+Room_Label[8],0410B Supply
+Room_Label[9],0410C Equipment
+Room_Label[10],0410D Control
+Room_Label[11],0410E Exam
+Room_ID[1],RM01
+Room_ID[2],RM02

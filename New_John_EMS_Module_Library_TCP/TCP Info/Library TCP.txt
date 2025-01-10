@@ -1,0 +1,33 @@
+--------------------EMS Parse-----------------------------
+-EMS_Parse()
+	(CS already started our server at this point)
+	-TCP_Server_Send: We ACK back to all of our clients like EMS SW
+	-or call Camera Func which calls TCP_Server_Send
+
+
+--------------------SERVER -----------------------------
+
+-TCP_Server_Listener and Client_Handler:
+	-Listening for data from clients, then pass it to CS receive data.
+
+
+--------------------CLIENT -----------------------------
+
+-EMS_Client_Send and EMS_Client_Connect
+	-Launched from the CS TCP_Client_Send
+
+-EMS_Receiver
+	-As client, receiving data from server.
+
+
+
+--------------------CLIENT: Camera's Rooms -----------------------------
+
+Class Room 
+{
+	Funcs call CS TCP_Client_Send
+}
+Class Camera 
+{
+	Funcs call CS TCP_Client_Send
+}

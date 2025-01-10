@@ -1,0 +1,36 @@
+-----------------CAMERA----------------------
+PATH = Camera TP->Crestron Client->EMS SW Server
+
+
+
+-----------------ROOM-----------------------
+
+
+
+Individual Tests
+----------------
+{[Paging][Clear][2][0]}
+{[Paging][Clear][2][3,4]}
+
+{[Paging][Clear][2][0],[Paging][Clear][2][3,4],[Paging][Route][2][1,2,3,4,5],[Paging][Route][2][0]}
+
+
+    # # TEST CASES: TCP Server: Paging, Message, and Room Commands
+    # test1 = "{[Paging][Clear][2][0],[Paging][Clear][2][3,4],[Paging][Route][2][1,2,3,4,5],[Paging][Route][2][0]}\n"
+    # test2 = "{[Message][Play][1][3],[Message][Record][0][2],[Message][Delete][1][3],[Message][Stop][0][2]}\n"
+    # test3 = "{[Room][Mute][1,2,3][1],[Room][Mute][0][1],[Room][Mute][2][0],[Room][Mute][0][0]}\n"
+    # sys.EMS_Parse(test1);
+    # sys.EMS_Parse(test2);
+    # sys.EMS_Parse(test3);
+    
+    # # TEST CASES: TCP Server: Paging, Message, and Room Commands
+    # sys.EMS_Parse("{[ACK][Status][RM_04][3]}\n")
+    # #EMS_Parse("{[ACK][Privacy][RM_04][1]}\n")
+    # #EMS_Parse("{[ACK][Mute][RM_04][1]}\n")
+    # #EMS_Parse("{[ACK][Status][RM_04]}\n")
+
+    # # TEST CASES: Console Command, Load Config, with more tests
+    # sys.EMS_Parse("{[Console][Configuration][EMS_Config2.csv][1]}\n") # Load a different config file
+    # sys.EMS_Parse(test1);
+	
+	
