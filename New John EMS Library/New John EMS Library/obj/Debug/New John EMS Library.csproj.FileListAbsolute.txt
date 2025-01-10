@@ -1,0 +1,140 @@
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Class1.cs
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\New John EMS Library.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\New John EMS Library.pdb
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DM.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Fusion.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Gateways.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.GeneralIO.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Keypads.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Lighting.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Media.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Remotes.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Shades.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Thermostats.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UC.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UI.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpAutoUpdateInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCloudClientInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCryptographyInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCustomAttributesInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCWSHelperInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpExchangeWebServices.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpHelperInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpNewtonsoft.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpOnvifInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpPro.exe
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpProgrammingInterfaces.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpReflectionInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpSQLHelperInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpTimerEventInterface.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DM.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Fusion.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Gateways.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.GeneralIO.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Keypads.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Lighting.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Media.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Remotes.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Shades.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Thermostats.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UC.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UI.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpAutoUpdateInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCloudClientInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCryptographyInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCustomAttributesInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCWSHelperInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpExchangeWebServices.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpHelperInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpNewtonsoft.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpOnvifInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpPro.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpProgrammingInterfaces.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpReflectionInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpSQLHelperInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpTimerEventInterface.xml
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.csproj.CoreCompileInputs.cache
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.csproj.CopyComplete
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.dll
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.pdb
+C:\Users\nelson.blickman\OneDrive - Education Management Solutions, LLC\Desktop\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.csprojAssemblyReference.cache
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Class1.cs
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\New John EMS Library.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\New John EMS Library.pdb
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DM.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Fusion.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Gateways.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.GeneralIO.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Keypads.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Lighting.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Media.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Remotes.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Shades.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Thermostats.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UC.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UI.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpAutoUpdateInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCloudClientInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCryptographyInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCustomAttributesInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCWSHelperInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpExchangeWebServices.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpHelperInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpNewtonsoft.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpOnvifInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpPro.exe
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpProgrammingInterfaces.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpReflectionInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpSQLHelperInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpTimerEventInterface.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.AudioDistribution.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.CrestronConnected.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DeviceSupport.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.DM.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.EthernetCommunications.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Fusion.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Gateways.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.GeneralIO.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Keypads.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Lighting.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Media.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Remotes.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Shades.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.Thermostats.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.ThreeSeriesCards.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UC.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\Crestron.SimplSharpPro.UI.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpAutoUpdateInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCloudClientInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCryptographyInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCustomAttributesInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpCWSHelperInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpExchangeWebServices.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpHelperInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpNewtonsoft.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpOnvifInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpPro.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpProgrammingInterfaces.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpReflectionInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpSQLHelperInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\bin\Debug\SimplSharpTimerEventInterface.xml
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.csprojAssemblyReference.cache
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.csproj.CoreCompileInputs.cache
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.csproj.CopyComplete
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.dll
+C:\repos\Completed Libraries\New John EMS Library\New John EMS Library\obj\Debug\New John EMS Library.pdb
