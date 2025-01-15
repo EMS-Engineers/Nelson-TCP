@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 namespace New_John_EMS_Library {
 
     public delegate void messagePlayerHandler(uint player, uint message);
-    public delegate void biampRouteHandler(int input, int output);
+    public delegate void biampRouteHandler(int input, int output, bool route, bool all_rooms);
     public delegate void biampPresetHandler(string presetName);
     public delegate void biampMuteHandler(int roomId, bool mute_state);
     public delegate void requestHandler();
@@ -43,8 +43,7 @@ namespace New_John_EMS_Library {
         public static event messagePlayerHandler Message_Record;
         public static event messagePlayerHandler Message_Delete;
         public static event messagePlayerHandler Message_Stop;
-        public static event biampRouteHandler Biamp_Route;
-        public static event biampRouteHandler Biamp_UnRoute;
+        public static event biampRouteHandler Biamp_Update;
         public static event biampMuteHandler Biamp_Mute_Update;
         public static event biampPresetHandler Biamp_Preset;
         public static event requestHandler Request_Ping;
@@ -378,15 +377,20 @@ namespace New_John_EMS_Library {
         /// <param name="data">String list of data needed to execute the command</param>
         /// <returns>Boolean as to whether the command was executed or not</returns>
         public static bool Paging_Command(int command, List<string> data) {
-            switch (command) {
+            Boolean all_rooms = false;
+            if (data[1] == "0") {
+                all_rooms = true;
+            }
+                switch (command) {
                 case 0: 
-                    //{[Paging][Route][6][1]}
+                    //{[Paging][Route][6][6]}
+                    //{[Paging][Route][6][0]}
                     if (!data[1].Contains(",")) {
-                        Biamp_Route(Int32.Parse(data[0]), Int32.Parse(data[1]));
+                        Biamp_Update(Int32.Parse(data[0]), Int32.Parse(data[1]), true, all_rooms);
                     } else {
                         //{[Paging][Route][6][1,2]}
                         foreach (string i in data[1].Split(',')) {
-                            Biamp_Route(Int32.Parse(data[0]), Int32.Parse(i));
+                            Biamp_Update(Int32.Parse(data[0]), Int32.Parse(i), true, all_rooms);
                         }
                     }
                     return true;
@@ -397,8 +401,14 @@ namespace New_John_EMS_Library {
                     if (data[1] == "0") {
                         Biamp_Preset($"Input_{data[0]}_Clear");
                     } else {
-                        foreach (string i in data[1].Split(',')) {
-                            Biamp_UnRoute(Int32.Parse(data[0]), Int32.Parse(i));
+                        //{[Paging][Clear][6][6]}
+                        if (!data[1].Contains(",")) {
+                            Biamp_Update(Int32.Parse(data[0]), Int32.Parse(data[1]), false, all_rooms);
+                        } else {
+                            //{[Paging][Clear][6][6,7]}
+                            foreach (string i in data[1].Split(',')) {
+                                Biamp_Update(Int32.Parse(data[0]), Int32.Parse(i), false, all_rooms);
+                            }
                         }
                     }
                     return true;
