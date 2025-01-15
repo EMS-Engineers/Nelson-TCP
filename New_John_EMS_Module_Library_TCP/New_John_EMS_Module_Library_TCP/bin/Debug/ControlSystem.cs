@@ -44,11 +44,13 @@ namespace EMS_Module {
         string[] Camera_Label = new string[200];
         string[] Room_Label = new string[100];
         int total_rooms = 0;
-        int TP1_Camera, TP1_Room = 0;
+        int TP1_Camera, TP1_Room, TP1_Page_Room = 0;
         Dictionary<int, BiampMute> muteMap = new Dictionary<int, BiampMute>();
+        Dictionary<(int,int), BiampCrosspoint> crosspointMap = new Dictionary<(int, int), BiampCrosspoint>();
 
         // Biamp objects
         BiampMute biampMute;
+        BiampCrosspoint biampCrosspoint;
 
         // Threading
         Thread EMS_Load_Config_Thread = null;
@@ -78,12 +80,12 @@ namespace EMS_Module {
         /// You cannot send / receive data in the constructor
         /// </summary>
         public ControlSystem() : base() {
-           
+
             try {
-                
+
                 // Loading our EMS Config sooner, not in init system.  So we can create a biamp object.
                 EMS_Load_Config("");
-               
+
                 Crestron.SimplSharpPro.CrestronThread.Thread.MaxNumberOfUserThreads = 80;
 
                 //Subscribe to the controller events (System, Program, and Ethernet)
@@ -98,11 +100,10 @@ namespace EMS_Module {
                 EMS_Modules.Request_Ping += new requestHandler(Request_Ping_Func);
 
                 // Biamp Related Events
-                EMS_Modules.Biamp_Route += new biampRouteHandler(Route_Biamp);
-                EMS_Modules.Biamp_UnRoute += new biampRouteHandler(UnRoute_Biamp);
+                EMS_Modules.Biamp_Update += new biampRouteHandler(Update_Biamp);
                 EMS_Modules.Biamp_Preset += new biampPresetHandler(Preset_Biamp);
                 EMS_Modules.Biamp_Mute_Update += new biampMuteHandler(Mute_Update);
-                
+
                 EMS_Modules.TCP_Server_Receive_Data += new tcpDataHandler(TCP_Server_Receive_Data);
                 EMS_Modules.EMS_Client_Receive_Data += new tcpDataHandler(TCP_Client_Receive_Data);
                 EMS_Modules.Debug_Print += new New_John_EMS_Library.debugHandler(Debug_Print);
@@ -114,6 +115,7 @@ namespace EMS_Module {
 
                 // Biamp Library Events
                 BiampMute.Debug_Print += new debugHandler2(Debug_Print);
+                BiampCrosspoint.Debug_Print += new debugHandler2(Debug_Print);
 
                 //Create custom console commands to control the processor
                 CrestronConsole.AddNewConsoleCommand(EMSDebug, "emsdebug", "on or off to debug EMS signals", ConsoleAccessLevelEnum.AccessAdministrator);
@@ -124,6 +126,8 @@ namespace EMS_Module {
                 CrestronConsole.AddNewConsoleCommand(EMS_Change_IP, "emsIP", "Set new ip address for the ems server", ConsoleAccessLevelEnum.AccessAdministrator);
                 CrestronConsole.AddNewConsoleCommand(Biamp_Change_IP, "biampIP", "Set new ip address for the biamp processor ssh connection", ConsoleAccessLevelEnum.AccessAdministrator);
                 CrestronConsole.AddNewConsoleCommand(BiampClientDisconnect, "discBC", "disconnect our Biamp Library client from the Biamp server", ConsoleAccessLevelEnum.AccessAdministrator);
+                CrestronConsole.AddNewConsoleCommand(BiampClientReconnect, "recBC", "reconnect our Biamp Library client from the Biamp server and start threads", ConsoleAccessLevelEnum.AccessAdministrator);
+                CrestronConsole.AddNewConsoleCommand(BiampClientConnectStatus, "statusBC", "check if our Biamp Library client is connected to Biamp", ConsoleAccessLevelEnum.AccessAdministrator);
 
                 EMS_Modules.Declare_Constants();
 
@@ -139,7 +143,6 @@ namespace EMS_Module {
                     } else {
                         if (File.Exists(filePath)) {
                             TP1.LoadSmartObjects(filePath);
-
                             foreach (KeyValuePair<uint, SmartObject> pair in TP1.SmartObjects) {
                                 pair.Value.SigChange += SmartObject_SigChange;
                             }
@@ -169,7 +172,7 @@ namespace EMS_Module {
                 ErrorLog.Error("Error in the constructor: {0}", e.Message);
             }
             ErrorLog.Notice("Finished constructor");
-            
+
         }
 
         /// <summary>
@@ -202,7 +205,7 @@ namespace EMS_Module {
             }
             ErrorLog.Notice("Finished initialize");
         }
-    
+
         void TCP_Server_Stop(string args) {
             if (emsDebugState) CrestronConsole.PrintLine("TCP Server Stop");
             EMS_Modules.TCP_Server_Stop();
@@ -219,18 +222,18 @@ namespace EMS_Module {
                 // We are client, sending to EMS server.
                 EMS_Modules.EMS_Client_Send(args, ems_ip, ems_port);
                 //try {
-                  //  TcpClient EMS_Client = new TcpClient();
-                    //EMS_Client.Connect("192.168.254.59", 53125);
-                    //CrestronConsole.PrintLine("Connection attempted");
-                    //using (var stream = EMS_Client.GetStream()) {
-                     //   CrestronConsole.PrintLine("We got stream.");
-                       // byte[] data = System.Text.Encoding.ASCII.GetBytes("Hello Hercules");
-                        //stream.Write(data, 0, data.Length);
-                        //CrestronConsole.PrintLine("Data sent.");
-                    //}
-                    //CrestronConsole.PrintLine("Connection Successful");
+                //  TcpClient EMS_Client = new TcpClient();
+                //EMS_Client.Connect("192.168.254.59", 53125);
+                //CrestronConsole.PrintLine("Connection attempted");
+                //using (var stream = EMS_Client.GetStream()) {
+                //   CrestronConsole.PrintLine("We got stream.");
+                // byte[] data = System.Text.Encoding.ASCII.GetBytes("Hello Hercules");
+                //stream.Write(data, 0, data.Length);
+                //CrestronConsole.PrintLine("Data sent.");
+                //}
+                //CrestronConsole.PrintLine("Connection Successful");
                 //} catch (Exception ex) {
-                  //  CrestronConsole.PrintLine($"Connection failed: {ex.Message}");
+                //  CrestronConsole.PrintLine($"Connection failed: {ex.Message}");
                 //}
             }
         }
@@ -249,7 +252,13 @@ namespace EMS_Module {
         private void BiampClientDisconnect(string cmdParameters) {
             biamp.Disconnect();
         }
-
+        void BiampClientReconnect(string cmdParameters) {
+            // Reconnect our biamp library client to the biamp, the shell, and start data threads for Biamp.
+            biamp.ConnectAndStartThreads();
+        }
+        void BiampClientConnectStatus(string cmdParameters) {
+            CrestronConsole.PrintLine(biamp.isConnected().ToString());
+        }
         void Biamp_Change_IP(string args) {
             string[] argList = args.Split(' ');
             if (args.Length > 0) {
@@ -309,7 +318,7 @@ namespace EMS_Module {
                     while ((line = streamReader.ReadLine()) != null) {
                         if (line.Contains("Server_IP")) {
                             ems_ip = line.Split(new[] { ',' }, 2)[1];
-                        }  else if (line.Contains("Server_Port")) {
+                        } else if (line.Contains("Server_Port")) {
                             ems_port = Int32.Parse(Regex.Match(line.Split(new[] { ',' }, 2)[1], @"\d+").Value);
                         } else if (line.Contains("Biamp_IP[")) {
                             int temp = Int32.Parse(Regex.Match(line, @"\d+").Value) - 1;
@@ -361,7 +370,7 @@ namespace EMS_Module {
             try {
                 biamp.ConnectAndStartThreads();
             } catch (Exception ex) {
-               CrestronConsole.PrintLine($"Error in Connect and Start Threads call attempt: {ex.Message}");
+                CrestronConsole.PrintLine($"Error in Connect and Start Threads call attempt: {ex.Message}");
             }
             return true;
         }
@@ -378,7 +387,7 @@ namespace EMS_Module {
             try {
                 //Object reference not set to the instance of an object error
                 if (currentDevice == TP1) {
-                    if (args.DeviceOnLine) {    
+                    if (args.DeviceOnLine) {
                         CrestronConsole.PrintLine("TP1 has come Online");
                         TP1.BooleanInput[10].BoolValue = true;
                         TP1.BooleanInput[10].BoolValue = false;
@@ -541,7 +550,7 @@ namespace EMS_Module {
                     break;
                 case SmartObjectID.roomNameCameraSel:
                     break;
-                // Room Recording Status
+                // Room Recording Status Labels
                 case SmartObjectID.roomNameRecordingSel:
                     if (args.Sig.Number > 1) {
                         int temp = (int)args.Sig.Number - 4011; // room1 is 4011, room2 is 4012
@@ -554,8 +563,27 @@ namespace EMS_Module {
                         }
                     }
                     break;
-                // Paging
+                // Paging Room
                 case SmartObjectID.roomName:
+                    int room_index = (int)args.Sig.Number - 4011; // room1 is 4011, room2 is 4012
+                    // Set the Labels.
+                    if (args.SmartObjectArgs.BooleanOutput[$"press{room_index + 1}"].BoolValue) { // On Rising Edge 
+                        //If button off
+                        if (TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue == false) {
+                            // Light up button
+                            TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue = true;
+                            // Make route
+                            // CREATE DICTIONARY: {6:TP1(page mic 1), 7:TP2(page mic 2)}. Pull Input 6 from it
+                            // HARD CODED 6.
+                            // Route
+                            Update_Biamp(6, room_index + 6, true, false);
+                        } else { // If button on
+                            // Turn off button
+                            TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue = false;
+                            // Unroute
+                            Update_Biamp(6, room_index + 6, false, false);
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -593,7 +621,7 @@ namespace EMS_Module {
                                 // Pause Recording
                                 Room[TP1_Room].Pause_Recording();
                                 Room[TP1_Room].Set_State(3);
-                                
+
                             } else if (args.Sig.Number == 412) {
                                 // Stop recording
                                 Room[TP1_Room].Stop_Recording();
@@ -618,6 +646,20 @@ namespace EMS_Module {
                                 // Tell EMS
                                 Room[TP1_Room].UnMute_Room();
                                 Room[TP1_Room].Set_Mute_State(0);
+                            } else if (args.Sig.Number == 45) {  // HARD CODED: pull the 6 out of dictionary TP1 to 6.
+                                // Page All Rooms
+                                Update_Biamp(6, 0, true, true);
+                                // Update Button FB
+                                for (int i = 0; i < total_rooms; i++) {
+                                    TP1.SmartObjects[45].BooleanInput[$"fb{i + 1}"].BoolValue = true;
+                                }
+                            } else if (args.Sig.Number == 46) {
+                                // Clear All Rooms
+                                Preset_Biamp("Input_6_Clear");
+                                // Update Button FB
+                                for (int i = 0; i < total_rooms; i++) {
+                                    TP1.SmartObjects[45].BooleanInput[$"fb{i + 1}"].BoolValue = false;
+                                }
                             }
                         }
                         break;
@@ -637,7 +679,7 @@ namespace EMS_Module {
                     ProcessRoomCommand(Room[i], type, value);
                 }
             } else {
-                int room_index = Int32.Parse(roomID.Substring(2))-1;
+                int room_index = Int32.Parse(roomID.Substring(2)) - 1;
                 ProcessRoomCommand(Room[room_index], type, value);
             }
         }
@@ -666,69 +708,19 @@ namespace EMS_Module {
             }
         }
 
-        /*
-        if (all_rooms == true) {
-            if (type == "status") { // status
-                for (int i = 0; i < total_rooms; i++) {
-                    Room[i].Set_State(Int32.Parse(value));
-                    CrestronConsole.PrintLine("\nFB from SW room command set :" + Room[i].Get_State().ToString());
-                }
-            } else if (type == "privacy") { // privacy
-                if (value == "1"){
-                    value = "4";
-                } else {
-                    value = "2";
-                }
-                for (int i = 0; i < total_rooms; i++) {
-                    Room[i].Set_State(Int32.Parse(value));
-                    CrestronConsole.PrintLine("\nFB from SW room command set :" + Room[i].Get_State().ToString());
-                }
-            } else {
-                for (int i = 0; i < total_rooms; i++) {
-                    Room[i].Set_Mute_State(Int32.Parse(value));
-                    CrestronConsole.PrintLine("\nFB from SW room command set :" + Room[i].Get_Mute_State().ToString());
-                }
-            }
-        } 
-        else {
-            int room_index = Int32.Parse(roomID.Substring(2))-1;
-            if (type == "status") {
-                Room[room_index].Set_State(Int32.Parse(value));
-                CrestronConsole.PrintLine("\nFB from SW room command set :" + Room[room_index].Get_State().ToString());
-            } else if (type == "privacy") {
-                if (value == "1") {
-                    Room[room_index].Set_State(4);
-                } else {
-                    Room[room_index].Set_State(2);
-                }
-                CrestronConsole.PrintLine("\nFB from SW room command set :" + Room[room_index].Get_State().ToString());
-            } else if (type == "mute") {
-                Room[room_index].Set_Mute_State(Int32.Parse(value));
-                CrestronConsole.PrintLine("\nFB from SW room command set :" + Room[room_index].Get_Mute_State().ToString());
-            }
-        }
-        */
 
-        private void EmsToCrestronStatus(List<string> data) {
-            //data = ["1,2"]
-            //data[0] = "1,2"
-            // data_list = ["1","2"] or ["0"]
-            string[] data_list = data[0].Split(','); // string[] array over a dynamic List<string>, efficient.
+
+        StringBuilder BuildAckCommand(string[] data_list) {
             string status_value;
             string room_number;
             StringBuilder ack_command = new StringBuilder(); // Doesn't need to build new object each time
-            string ack_command_result;
+
             ack_command.Append("{");
-
-            /*
-                NOTE: data_list[i]-1 because Room1 is index 0 of Room[] 
-            */
-
             if (int.Parse(data_list[0]) == 0) {
                 // Loop through All Room Id's to build command. 
             } else {
                 for (int i = 0; i < data_list.Length; i++) {
-                    status_value = Room[int.Parse(data_list[i])-1].Get_State().ToString();
+                    status_value = Room[int.Parse(data_list[i]) - 1].Get_State().ToString(); // NOTE: data_list[i]-1 because Room1 is index 0 of Room[] 
                     room_number = data_list[i];
                     ack_command.Append("[ACK][Status]")
                                .Append("[")
@@ -737,14 +729,31 @@ namespace EMS_Module {
                                .Append("[")
                                .Append(status_value)
                                .Append("]");
-
                     if (i != (data_list.Length - 1)) {
                         ack_command.Append(",");
                     }
                 }
             }
             ack_command.Append("}");
-            ack_command_result = ack_command.ToString();
+            return ack_command;
+        }
+
+        private void EmsToCrestronStatus(List<string> data) {
+            //data = ["1,2"]
+            //data[0] = "1,2"
+            // data_list = ["1","2"] or ["0"]
+            string[] data_list = data[0].Split(','); // string[] array over a dynamic List<string>, efficient.
+
+            // If all rooms, change data_list to be all rooms.
+            if (int.Parse(data_list[0]) == 0) {
+                data_list = new string[total_rooms];
+                for (int i = 0; i < total_rooms; i++) {
+                    data_list[i] = (i + 1).ToString();
+                }
+            }
+
+            StringBuilder ack_command = BuildAckCommand(data_list);
+            string ack_command_result = ack_command.ToString();
             EMS_Modules.TCP_Server_Send(ack_command_result);
         }
 
@@ -832,27 +841,53 @@ namespace EMS_Module {
             CrestronConsole.PrintLine("\n\n");
         }
 
-        void Route_Biamp(int input, int output) {
-            string command = string.Format("{0} set crosspointLevelState {1} {2} true", "Router1", input, output);
-            biamp.SendData(command);
-            if (emsDebugState) CrestronConsole.PrintLine("Routing Biamp input {0} to output {1}", input, output);
-            if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Route][{input}][{output}]}}\n");
-        }
+        void Biamp_Processing(int input, int output, bool route) {
+            string instance = "Router1";
+            // Biamp Crosspoint (Mixer Matrix) object setup 
+            if (crosspointMap.ContainsKey((input, output))) {
+                biampCrosspoint = crosspointMap[(input, output)];
+            } else {
+                biampCrosspoint = new BiampCrosspoint(biamp, instance, input, output);
+                // When driver receives line from the biamp, it loops through this list to match it to the right object.
+                biamp.Subscribe(biampCrosspoint);
+                // Add pair to muteMap
+                crosspointMap[(input, output)] = biampCrosspoint;
+            }
+            if (route == true) {
+                biampCrosspoint.SetOn();
+                if (emsDebugState) CrestronConsole.PrintLine("Routing Biamp input {0} to output {1}", input, output);
+                if (biamp.isConnected()) EMS_Modules.TCP_Server_Send($"{{[ACK][Route][{input}][{output}]}}\n");
 
-        void UnRoute_Biamp(int input, int output) {
-            string command = string.Format("{0} set crosspointLevelState {1} {2} false", "Router1", input, output);
-            biamp.SendData(command);
-            if (emsDebugState) CrestronConsole.PrintLine("Unrouting Biamp input {0} to output {1}", input, output);
-            if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Clear][{input}][{output}]}}\n");
+            } else {
+                biampCrosspoint.SetOff();
+                if (emsDebugState) CrestronConsole.PrintLine("Unrouting Biamp input {0} to output {1}", input, output);
+                if (biamp.isConnected()) EMS_Modules.TCP_Server_Send($"{{[ACK][Clear][{input}][{output}]}}\n");
+            }
         }
-
+     
+        void Update_Biamp(int input, int output, bool route, bool all_rooms) {
+            if (all_rooms == true && route == true) {
+                // Route to all rooms
+                for (int i = 1; i <= total_rooms; i++) {
+                    Biamp_Processing(input, (i+5), route);
+                }
+            } else {
+                Biamp_Processing(input, output, route);
+            }
+        }
         void Preset_Biamp(string name) {
             biamp.RecallPresetByName(name);
             if (emsDebugState) CrestronConsole.PrintLine("Setting Biamp Preset {0}", name);
+            string[] parts = name.Split('_');
 
-            ErrorLog.Notice("PRESET_BIAMP FUNC...Biamp Object is {0}. Biamp IP is {1}", biamp, biamp_IP[0]);
+            int input = Int32.Parse(parts[1]);
 
-            //if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send("{[ACK][Clear][][0]}\n");
+            if (parts[2] == "Clear") {
+                if (biamp.isConnected()) EMS_Modules.TCP_Server_Send($"{{[ACK][Clear][{input}][0]}}\n");
+            } else { // Zoning
+                if (biamp.isConnected()) EMS_Modules.TCP_Server_Send($"{{[ACK][Zone][{input}][{parts[2]}]}}\n");
+            }
+
         }
 
         void Mute_Processing(int room_index, bool mute) {
@@ -890,70 +925,6 @@ namespace EMS_Module {
                 Mute_Processing(room_index, mute);
             }
         }
-
-        /*
-        void Mute_Biamp(string name, bool from_crestron) {
-
-
-            if (muteMap.ContainsKey()) {
-
-            }
-
-            // Put this at class level
-            //Dictionary<string, BiampMute> muteMap = new Dictionary<string, BiampMute>();
-            // for mute and unmute.  can do the same check. if object already exists. WAIT THAT WONT HELP BECAUSE 
-            // THE driver list won't change 
-           
-
-            //biampMute = new BiampMute(biamp, "Mute1", 1);
-            // need below line because when driver receives line from the biamp, want to match it to the right object.
-            //biamp.Subscribe(biampMute);
-            // below subscribe because we if an external device changes the biamp, we want to get the update on that.
-            //biampMute.Subscribe();
-            //biampMute.SetMuteOff();
-            //biampMute.Toggle();
-
-            // name = "1" for "RM01"
-            if (from_crestron) {
-                string command = string.Format("Mute_{0} set mute 1 true", name);
-                biamp.SendData(command);
-                if (emsDebugState) CrestronConsole.PrintLine("Muting Biamp mute: Mute1", );
-                if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][{i + 1}][1]}}\n");
-            }
-            // from_SW
-            else if (name == "0") {    
-                for (int i = 0; i < total_rooms; i++) {
-                    string command = string.Format("Mute_{0} set mute 1 true", i+1);
-                    biamp.SendData(command);
-                    if (emsDebugState) CrestronConsole.PrintLine("Muting Biamp mute: Mute_{0}", i+1);
-                    if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][{i+1}][1]}}\n");
-                }
-            } else { // name = say "RM01"
-                int room_index = Int32.Parse(name.Substring(2)) - 1;
-                string command = string.Format("Mute_{0} set mute 1 true", room_index);
-                biamp.SendData(command);
-                if (emsDebugState) CrestronConsole.PrintLine("Muting Biamp mute: Mute_{0}", room_index);
-                if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][{room_index}][1]}}\n");
-            }
-        }
-
-        void UnMute_Biamp(string name) {
-            if (name == "0") {
-                for (int i = 0; i < total_rooms; i++) {
-                    string command = string.Format("Mute_{0} set mute 1 false", i + 1);
-                    biamp.SendData(command);
-                    if (emsDebugState) CrestronConsole.PrintLine("UnMuting Biamp mute: Mute_{0}", i + 1);
-                    if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][{i + 1}][0]}}\n");
-                }
-            } else { // name = say "RM01"
-                int room_index = Int32.Parse(name.Substring(2))-1;
-                string command = string.Format("Mute_{0} set mute 1 false", room_index);
-                biamp.SendData(command);
-                if (emsDebugState) CrestronConsole.PrintLine("UnMuting Biamp mute: Mute_{0}", room_index);
-                if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][{room_index}][0]}}\n");
-            }
-        }
-        */
 
         /// <summary>
         /// Event Handler for Ethernet events: Link Up and Link Down. 
