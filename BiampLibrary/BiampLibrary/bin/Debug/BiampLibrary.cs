@@ -68,7 +68,7 @@ namespace BiampLibrary {
             client.Connect();
 
             if (client.IsConnected) {
-                Debug_Print("Biamp library client is connected.");
+                Debug_Print("Biamp library client is connected to Biamp.");
                 
                 // Create a shell stream (act as our terminal)
                 shell = client.CreateShellStream("xterm", 80, 24, 800, 600, 1024);
@@ -77,13 +77,10 @@ namespace BiampLibrary {
                 // Create a new continuous thread to listen for incoming data from server
                 Thread whileLoopThread = new Thread(ListenForData);
                 whileLoopThread.Start();
-                Debug_Print("Biamp listening thread started.");
 
                 // Create a thread to send data to the biamp with a delay.
                 Thread queueThread = new Thread(SendDataQueue);
                 queueThread.Start();
-                Debug_Print("Biamp send data thread started.");
-
                 return true;
             } 
             else {
@@ -117,20 +114,17 @@ namespace BiampLibrary {
         }
         public void SendData(string command) {
             commandQueue.Enqueue(command);
+            //Debug_Print("\nAdded to the queue: \n");
+            //Debug_Print(command);
+            //Debug_Print("\nqueue Length: \n");
+            //Debug_Print(command.Length.ToString());
         }
         public void SendDataQueue() {
             while (client.IsConnected) {
                 try {
                     if (commandQueue.Count != 0) {
                         string nextCommand = commandQueue.Dequeue();
-                        try {
-                            shell.WriteLine(nextCommand);
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug_Print(ex.Message);
-                            Debug_Print(ex.StackTrace);
-                        }
+                        shell.WriteLine(nextCommand);
                         lastCommand = nextCommand;
                         Thread.Sleep(500);
                     }
@@ -138,6 +132,10 @@ namespace BiampLibrary {
                     break;
                 }
             }
+            // Don't want to leave shell open in our memory, accumulating, or server side may think shell is still active.
+            shell.Dispose();
+            client.Disconnect();
+            // In C# this thread should end w/o lingering resources on it's own!
         }
         private void ListenForData() {
             while (client.IsConnected) {
@@ -145,7 +143,7 @@ namespace BiampLibrary {
                     string feedbackLine = shell.ReadLine();
                     if (feedbackLine != null && feedbackLine != "") {
 
-                        // THIS line needed just to handle preset
+                        // This line needed just to handle presets.
                         DataReceivedEvent(feedbackLine);
 
                         foreach (AbstractBiampObject obj in subscribedObjects) {
@@ -159,6 +157,8 @@ namespace BiampLibrary {
                     break;
                 }
             }
+            shell.Dispose();
+            client.Disconnect();
         }
         public void RecallPresetByName(string index) {
             Debug_Print("RecallPresetByName called");
@@ -248,6 +248,8 @@ namespace BiampLibrary {
         }
     }
     public class BiampCrosspoint : AbstractBiampObject {
+        public static event debugHandler2 Debug_Print;
+
         // Variables
         Biamp biamp;
         string instance;
@@ -273,6 +275,7 @@ namespace BiampLibrary {
         }
         public void SetOn() {
             string command = string.Format("{0} set crosspointLevelState {1} {2} true", instance, index1, index2);
+            Debug_Print("Set on command: " + command);
             biamp.SendData(command); // Send command to Biamp 
             Get();
         }
