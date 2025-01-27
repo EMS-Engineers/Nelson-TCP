@@ -44,7 +44,7 @@ namespace EMS_Module {
         string[] Camera_Label = new string[200];
         string[] Room_Label = new string[100];
         int total_rooms = 0;
-        int TP1_Camera, TP1_Room, TP1_Page_Room = 0;
+        int TP1_Camera, Room_Label_Index = 0;
         Dictionary<int, BiampMute> muteMap = new Dictionary<int, BiampMute>();
         Dictionary<(int,int), BiampCrosspoint> crosspointMap = new Dictionary<(int, int), BiampCrosspoint>();
 
@@ -110,8 +110,13 @@ namespace EMS_Module {
                 EMS_Camera.TCP_Client_Send += new tcpDataSend(TCP_Client_Send);
                 EMS_Camera.Preset_Saved += new cameraControl(Cam_Preset_Saved);
                 EMS_Room.TCP_Client_Send += new tcpDataSend(TCP_Client_Send);
-                EMS_Modules.EmsToCrestronStatus += new emsToCrestronStatusRequest(EmsToCrestronStatus);
+                
+                //EMS_Modules.EmsRequestStatPrivEvent += new emsToCrestronStatusRequest(EmsRequestStatusPrivacy);
+                EMS_Modules.EmsRequestMuteEvent += new emsToCrestronMuteRequest(EmsRequestMute);
                 EMS_Modules.Set_Room_States_Event += new set_Room_States_Handler(Set_Room_States_Func);
+                EMS_Modules.Update_TouchPanel_FeedBack_Status += new Update_TouchPanel_Status_FB_Handler(Update_TouchPanel_FeedBack_Status);
+                //EMS_Modules.Update_TouchPanel_FeedBack_Mute += new Update_TouchPanel_Mute_FB_Handler(Update_TouchPanel_FeedBack_Mute);
+
 
                 // Biamp Library Events
                 BiampMute.Debug_Print += new debugHandler2(Debug_Print);
@@ -381,7 +386,6 @@ namespace EMS_Module {
         }
 
         // Event Handlers
-
         void Touchpanel_StatusChange(GenericBase currentDevice, OnlineOfflineEventArgs args) {
 
             try {
@@ -407,27 +411,34 @@ namespace EMS_Module {
                             if (Camera[i].get_IP() != "0.0.0.0") {
                                 TP1.SmartObjects[(uint)SmartObjectID.camSelect].StringInput[$"text-o{i + 1}"].StringValue = Camera_Label[i];
                                 TP1.SmartObjects[(uint)SmartObjectID.camSelect].BooleanInput[$"Item {i + 1} Visible"].BoolValue = true;
-
                                 if (TP1_Camera == -1) { // Just highlights Cam 1 Select at the start.
                                     TP1_Camera = i;
                                     TP1.SmartObjects[(uint)SmartObjectID.camSelect].BooleanInput[$"fb{TP1_Camera + 1}"].BoolValue = true;
                                 }
                             }
                         }
-                        //Room Labels
-                        TP1_Room = -1;
-                        for (int i = 0; i < 2; i++) {  // HARD CODE 2 rooms
-                            // roomName Paging 
+                        // roomName Room Control labels
+                        string label_value = "";
+                        for (int i = 0; i<(total_rooms*3); i++) {  // If 2 rooms, need slots i 0,3.  (Because 1,2,4,5 are feedback slots). Room Label index are 0 and 1
+                            if (i == 0) {
+                                Room_Label_Index = 0;
+                                label_value = Room_Label[Room_Label_Index];
+                            }
+                            else if(i%3==0) {
+                                Room_Label_Index = i / 3;
+                                label_value = Room_Label[Room_Label_Index];
+                            } else {
+                                label_value = "No Feedback";
+                            }
+                            CrestronConsole.PrintLine("i and labelel value " + i + label_value);
+                            // roomName Room Control
+                            TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{i + 1}"].StringValue = label_value;
+                            TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].BooleanInput[$"Item {i + 1} Visible"].BoolValue = true;
+                        }
+                        // roomName Paging labels
+                        for (int i = 0; i < (total_rooms); i += 1) {
                             TP1.SmartObjects[(uint)SmartObjectID.roomName].StringInput[$"text-o{i + 1}"].StringValue = Room_Label[i];
                             TP1.SmartObjects[(uint)SmartObjectID.roomName].BooleanInput[$"Item {i + 1} Visible"].BoolValue = true;
-
-                            // roomName Room Control
-                            TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{i + 1}"].StringValue = Room_Label[i];
-                            TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].BooleanInput[$"Item {i + 1} Visible"].BoolValue = true;
-                            if (TP1_Room == -1) { // Just highlights Room 1 Select at the start.
-                                TP1_Room = i;
-                                TP1.SmartObjects[(uint)SmartObjectID.camSelect].BooleanInput[$"fb{TP1_Camera + 1}"].BoolValue = true;
-                            }
                         }
                     } else {
                         CrestronConsole.PrintLine("TP1 has gone Offline");
@@ -552,36 +563,43 @@ namespace EMS_Module {
                     break;
                 // Room Recording Status Labels
                 case SmartObjectID.roomNameRecordingSel:
-                    if (args.Sig.Number > 1) {
-                        int temp = (int)args.Sig.Number - 4011; // room1 is 4011, room2 is 4012
-                        if (args.SmartObjectArgs.BooleanOutput[$"press{temp + 1}"].BoolValue) {
-                            TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{temp + 1}"].BoolValue = true;
-                            if (TP1_Room != temp) {
-                                TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{TP1_Room + 1}"].BoolValue = false;
+                    if (args.Sig.Number > 1) { // rising edge check
+                        int room_index2 = (int)args.Sig.Number - 4011; // room1 is 4011, room2 is 4014.....
+                        // room_index2 = 0,2...
+
+                        // Check if button was pressed (on rising edge)
+                        if (args.SmartObjectArgs.BooleanOutput[$"press{room_index2 + 1}"].BoolValue) {
+                            // If the button is off, light it up
+                            if (TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index2 + 1}"].BoolValue == false) {
+                                TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index2 + 1}"].BoolValue = true;
+                            } else {
+                                // If the button is on, turn it off
+                                TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index2 + 1}"].BoolValue = false;
                             }
-                            TP1_Room = temp;
                         }
                     }
                     break;
                 // Paging Room
                 case SmartObjectID.roomName:
-                    int room_index = (int)args.Sig.Number - 4011; // room1 is 4011, room2 is 4012
-                    // Set the Labels.
-                    if (args.SmartObjectArgs.BooleanOutput[$"press{room_index + 1}"].BoolValue) { // On Rising Edge 
-                        //If button off
-                        if (TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue == false) {
-                            // Light up button
-                            TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue = true;
-                            // Make route
-                            // CREATE DICTIONARY: {6:TP1(page mic 1), 7:TP2(page mic 2)}. Pull Input 6 from it
-                            // HARD CODED 6.
-                            // Route
-                            Update_Biamp(6, room_index + 6, true, false);
-                        } else { // If button on
-                            // Turn off button
-                            TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue = false;
-                            // Unroute
-                            Update_Biamp(6, room_index + 6, false, false);
+                    if (args.Sig.Number > 1) { // rising edge check
+                        int room_index = (int)args.Sig.Number - 4011; // room1 is 4011, room2 is 4012
+                                                                      // Set the Labels.
+                        if (args.SmartObjectArgs.BooleanOutput[$"press{room_index + 1}"].BoolValue) { // On Rising Edge 
+                                                                                                      //If button off
+                            if (TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue == false) {
+                                // Light up button
+                                TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue = true;
+                                // Make route
+                                // CREATE DICTIONARY: {6:TP1(page mic 1), 7:TP2(page mic 2)}. Pull Input 6 from it
+                                // HARD CODED 6.
+                                // Route
+                                Update_Biamp(6, room_index + 6, true, false);
+                            } else { // If button on
+                                     // Turn off button
+                                TP1.SmartObjects[args.SmartObjectArgs.ID].BooleanInput[$"fb{room_index + 1}"].BoolValue = false;
+                                // Unroute
+                                Update_Biamp(6, room_index + 6, false, false);
+                            }
                         }
                     }
                     break;
@@ -605,61 +623,26 @@ namespace EMS_Module {
                             TP1_Subpage = TP1.BooleanInput[20]; // Loads Paging Subpage
                             TP1_Subpage.BoolValue = true;
                         }
-                        if (args.Sig.BoolValue) { // If we are on the rising edge of button, since don't want to do it twice.
-                            // Room Control Subpage Buttons
-                            if (args.Sig.Number == 410) {
-                                // Start Recording
-                                Room[TP1_Room].Start_Recording();
-                                Room[TP1_Room].Set_State(1);
-                                /*
-                                 * 
-                                 * When we want to highlight the buttons, do 
-                                 * TP1.BooleanInput[410].BoolValue = true;
-                                 * 
-                                */
-                            } else if (args.Sig.Number == 411) {
-                                // Pause Recording
-                                Room[TP1_Room].Pause_Recording();
-                                Room[TP1_Room].Set_State(3);
-
-                            } else if (args.Sig.Number == 412) {
-                                // Stop recording
-                                Room[TP1_Room].Stop_Recording();
-                                Room[TP1_Room].Set_State(2);
-                            } else if (args.Sig.Number == 413) {
-                                // Enter privacy
-                                Room[TP1_Room].Request_Privacy();
-                                Room[TP1_Room].Set_State(4);
-                            } else if (args.Sig.Number == 414) {
-                                // Leave Privacy
-                                Room[TP1_Room].Leave_Privacy();
-                                Room[TP1_Room].Set_State(2);
-                            } else if (args.Sig.Number == 415) {
-                                // Mute Biamp
-                                Mute_Update(TP1_Room + 1, true); // Doing + 1, Because index 0 is Room ID 1 
-                                // Tell EMS
-                                Room[TP1_Room].Mute_Room();
-                                Room[TP1_Room].Set_Mute_State(1);
-                            } else if (args.Sig.Number == 416) {
-                                // Unmute Biamp
-                                Mute_Update(TP1_Room + 1, false);
-                                // Tell EMS
-                                Room[TP1_Room].UnMute_Room();
-                                Room[TP1_Room].Set_Mute_State(0);
-                            } else if (args.Sig.Number == 45) {  // HARD CODED: pull the 6 out of dictionary TP1 to 6.
-                                // Page All Rooms
-                                Update_Biamp(6, 0, true, true);
-                                // Update Button FB
-                                for (int i = 0; i < total_rooms; i++) {
-                                    TP1.SmartObjects[45].BooleanInput[$"fb{i + 1}"].BoolValue = true;
-                                }
-                            } else if (args.Sig.Number == 46) {
-                                // Clear All Rooms
-                                Preset_Biamp("Input_6_Clear");
-                                // Update Button FB
-                                for (int i = 0; i < total_rooms; i++) {
-                                    TP1.SmartObjects[45].BooleanInput[$"fb{i + 1}"].BoolValue = false;
-                                }
+                        // If we are on the rising edge of button, since don't want to do it twice.
+                        if (args.Sig.BoolValue) { 
+                            // Select or Deselect All rooms
+                            if (args.Sig.Number == 408) {selectOrDeselectAllRooms(true);}
+                            else if (args.Sig.Number == 409) {selectOrDeselectAllRooms(false);}
+                            // Recording Actions
+                            else if (args.Sig.Number == 410) { // Start Recording
+                                LoopThroughRoomsAndExecuteAction(args, StartRecording);
+                            } else if (args.Sig.Number == 411) { // Pause Recording
+                                LoopThroughRoomsAndExecuteAction(args, PauseRecording);
+                            } else if (args.Sig.Number == 412) { // Stop Recording
+                                LoopThroughRoomsAndExecuteAction(args, StopRecording);
+                            } else if (args.Sig.Number == 413) { // Enter Privacy
+                                LoopThroughRoomsAndExecuteAction(args, EnterPrivacy);
+                            } else if (args.Sig.Number == 414) { // Leave Privacy
+                                LoopThroughRoomsAndExecuteAction(args, LeavePrivacy);
+                            } else if (args.Sig.Number == 415) { // Mute Biamp
+                                LoopThroughRoomsAndExecuteAction(args, MuteBiamp);
+                            } else if (args.Sig.Number == 416) { // Unmute Biamp
+                                LoopThroughRoomsAndExecuteAction(args, UnmuteBiamp);
                             }
                         }
                         break;
@@ -672,6 +655,91 @@ namespace EMS_Module {
                 }
             }
         }
+        void selectOrDeselectAllRooms(bool select) {
+            for (int i =0; i < total_rooms; i++) {
+                TP1.SmartObjects[68].BooleanInput[$"fb{i + 1}"].BoolValue = select;
+            }
+        }
+        void LoopThroughRoomsAndExecuteAction(SigEventArgs args, Action<int> roomAction) {
+            // Loop through all rooms and execute the provided action if the button for the room is lit up
+            for (int i = 0; i < total_rooms; i++) {
+                if (TP1.SmartObjects[68].BooleanInput[$"fb{i + 1}"].BoolValue == true) {
+                    // Execute the action for the room
+                    roomAction(i);
+                }
+            }
+        }
+
+        // Define methods for each action
+        void StartRecording(int roomIndex) {Room[roomIndex].Start_Recording();}
+        void PauseRecording(int roomIndex) {Room[roomIndex].Pause_Recording();}
+        void StopRecording(int roomIndex) {Room[roomIndex].Stop_Recording();}
+        void EnterPrivacy(int roomIndex) {Room[roomIndex].Request_Privacy();}
+        void LeavePrivacy(int roomIndex) {Room[roomIndex].Leave_Privacy();}
+        void MuteBiamp(int roomIndex) {
+            Mute_Update(roomIndex + 1, true); // Doing +1 because index 0 is Room ID 1
+            Room[roomIndex].Mute_Room();
+        }
+        void UnmuteBiamp(int roomIndex) {
+            Mute_Update(roomIndex + 1, false); // Doing +1 because index 0 is Room ID 1
+            Room[roomIndex].UnMute_Room();
+        }
+        /*
+        void Set_ButtonHighlightState(uint buttonNumber) {
+            // Turn off all the buttons first
+            TP1.BooleanInput[410].BoolValue = false;
+            TP1.BooleanInput[411].BoolValue = false;
+            TP1.BooleanInput[412].BoolValue = false;
+            TP1.BooleanInput[413].BoolValue = false;
+            //TP1.BooleanInput[414].BoolValue = false;
+
+            // Now highlight the selected button
+            TP1.BooleanInput[buttonNumber].BoolValue = true;
+        }
+        */
+        void Update_TouchPanel_FeedBack_Status(int roomIndex) {
+            // roomIndex 1 --> 2
+            // roomIndex 2 --> 5
+            // roomIndex 3 --> 8
+            EMS_Room room_object = Room[roomIndex-1];
+            int smart_object_fb = (roomIndex * 3) - 1;
+            // Example mapping state to feedback signals
+            switch (room_object.Get_State()) {
+                case 1: // Recording Started
+                    TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{smart_object_fb}"].StringValue = "Recording in Progress";
+                    break;
+                case 3: // Recording Paused
+                    TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{smart_object_fb}"].StringValue = "Recording is Paused";
+                    break;
+                case 2: // Recording Stopped
+                    TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{smart_object_fb}"].StringValue = "Recording is Stopped";
+                    break;
+                case 5: // Privacy Entered
+                    TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{smart_object_fb}"].StringValue = "Privacy Entered";
+                    break;
+                //default:
+                    // No state, ensure everything is off
+                    //Set_ButtonHighlightState(0);  // Reset (turn off all buttons)
+                    //break;
+            }
+            TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].BooleanInput[$"Item {smart_object_fb} Visible"].BoolValue = true;
+        }
+
+        /* DONT NEED from SW! BUT use this for ACK From Biamp?
+        void Update_TouchPanel_FeedBack_Mute(int roomIndex) {
+            // roomIndex 1 --> 3
+            // roomIndex 2 --> 6
+            EMS_Room room_object = Room[roomIndex - 1];
+            int smart_object_fb = roomIndex * 3;
+            // Example mapping state to feedback signals
+            if (room_object.Get_Mute_State() == 1) {
+                TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{smart_object_fb}"].StringValue = "Mute is On";
+            } else {
+                TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].StringInput[$"text-o{smart_object_fb}"].StringValue = "Mute is Off";
+            }
+            TP1.SmartObjects[(uint)SmartObjectID.roomNameRecordingSel].BooleanInput[$"Item {smart_object_fb} Visible"].BoolValue = true;
+        }
+        */
 
         void Set_Room_States_Func(string roomID, string value, string type, Boolean all_rooms) {
             if (all_rooms) {
@@ -683,7 +751,6 @@ namespace EMS_Module {
                 ProcessRoomCommand(Room[room_index], type, value);
             }
         }
-
         void ProcessRoomCommand(EMS_Room room, string type, string value) {
             int state;
             switch (type) {
@@ -693,7 +760,7 @@ namespace EMS_Module {
                     CrestronConsole.PrintLine($"\nFB from SW room command set: {room.Get_State()}");
                     break;
                 case "privacy":
-                    state = (value == "1") ? 4 : 2;
+                    state = (value == "1") ? 5 : 2;
                     room.Set_State(state);
                     CrestronConsole.PrintLine($"\nFB from SW room command set: {room.Get_State()}");
                     break;
@@ -709,21 +776,38 @@ namespace EMS_Module {
         }
 
 
-
-        StringBuilder BuildAckCommand(string[] data_list) {
+        /* WAIT NOT NEEDED??
+        StringBuilder BuildAckCommand(string[] data_list, bool privacy) {
             string status_value;
             string room_number;
+            string type = "";
             StringBuilder ack_command = new StringBuilder(); // Doesn't need to build new object each time
 
             ack_command.Append("{");
+
+            // WAIT DON"T NEED THIS FOR LOOP
+            //
+            //
+
             if (int.Parse(data_list[0]) == 0) {
                 // Loop through All Room Id's to build command. 
             } else {
                 for (int i = 0; i < data_list.Length; i++) {
                     status_value = Room[int.Parse(data_list[i]) - 1].Get_State().ToString(); // NOTE: data_list[i]-1 because Room1 is index 0 of Room[] 
                     room_number = data_list[i];
-                    ack_command.Append("[ACK][Status]")
+                    // "Status" requests return 5 for privacy.  
+                    // "Privacy" requests return 1 for privacy.
+                    if (privacy == true) {type = "Privacy";}
+                    if (privacy == false) {type = "Status";}
+                    if (privacy == false && status_value == "4") {status_value = "5";}
+                    if (privacy == true && status_value == "4") {status_value = "1";}
+                    if (privacy == true && status_value != "4") { status_value = "0"; }
+                    if (i <= 8) {room_number = "0" + room_number;}
+                    ack_command.Append("[ACK]")
                                .Append("[")
+                               .Append(type)
+                               .Append("]")
+                               .Append("[RM")
                                .Append(room_number)
                                .Append("]")
                                .Append("[")
@@ -737,8 +821,7 @@ namespace EMS_Module {
             ack_command.Append("}");
             return ack_command;
         }
-
-        private void EmsToCrestronStatus(List<string> data) {
+        private void EmsRequestStatusPrivacy(List<string> data, bool privacy) {
             //data = ["1,2"]
             //data[0] = "1,2"
             // data_list = ["1","2"] or ["0"]
@@ -751,27 +834,61 @@ namespace EMS_Module {
                     data_list[i] = (i + 1).ToString();
                 }
             }
-
-            StringBuilder ack_command = BuildAckCommand(data_list);
+            StringBuilder ack_command = BuildAckCommand(data_list, privacy);
             string ack_command_result = ack_command.ToString();
             EMS_Modules.TCP_Server_Send(ack_command_result);
         }
+        */
 
+        StringBuilder BuildMuteAck(string[] data_list) {
+            string status_value;
+            string room_number; // "03"
+            StringBuilder ack_command = new StringBuilder(); // Doesn't need to build new object each concatenation
+            ack_command.Append("{");
+            for (int i = 0; i < data_list.Length; i++) {
+                status_value = Room[int.Parse(data_list[i]) - 1].Get_Mute_State().ToString(); // NOTE: data_list[i]-1 because Room1 is index 0 of Room[] 
+                room_number = data_list[i];
+                ack_command.Append("[ACK][Mute]")
+                            .Append("[RM")
+                            .Append(room_number)
+                            .Append("]")
+                            .Append("[")
+                            .Append(status_value)
+                            .Append("]");
+                if (i != (data_list.Length - 1)) {ack_command.Append(",");}
+            }
+            ack_command.Append("}");
+            return ack_command;
+        }
+
+        private void EmsRequestMute(List<string> data) {
+            //data = ["RM01,RM02"]
+            //data[0] = "RM01,RM02"
+            //data_list = ["RM01","RM02"] or ["0"]
+            string[] data_list = data[0].Split(','); // string[] array over a dynamic List<string>, efficient.
+            // If all rooms, change data_list to be all rooms.
+            if (data_list[0] == "0") {
+                data_list = new string[total_rooms];
+                for (int i = 0; i < total_rooms; i++) {data_list[i] = (i + 1).ToString();}
+            } else {
+                for (int i = 0; i<data_list.Length; i++) { data_list[i] = data_list[i].Substring(2);} // Remove "RM" prefix
+            }
+            StringBuilder ack_command = BuildMuteAck(data_list);
+            string ack_command_result = ack_command.ToString();
+            EMS_Modules.TCP_Server_Send(ack_command_result);
+        }
         void Cam_Preset_Saved(string data) {
             Pulse_Digital(TP1.BooleanInput[74], 500);
         }
-
         void Pulse_Digital(BoolInputSig signal, int time) {
             Thread temp = new Thread(() => Pulse_Digital_Thread(signal, time));
             temp.Start();
         }
-
         void Pulse_Digital_Thread(BoolInputSig signal, int time) {
             signal.BoolValue = true;
             Thread.Sleep(time);
             signal.BoolValue = false;
         }
-
         void ComPort_Receive_Data(ComPort ReceivingComPort, ComPortSerialDataEventArgs args) {
             string temp = args.SerialData;
             for (uint i = 0; i < this.ComPorts.Count; i++) {
@@ -840,7 +957,6 @@ namespace EMS_Module {
             CrestronConsole.PrintLine(obj.PrintLine());
             CrestronConsole.PrintLine("\n\n");
         }
-
         void Biamp_Processing(int input, int output, bool route) {
             string instance = "Router1";
             // Biamp Crosspoint (Mixer Matrix) object setup 
@@ -908,11 +1024,11 @@ namespace EMS_Module {
             if (mute) {
                 biampMute.SetMuteOn();
                 if (emsDebugState) CrestronConsole.PrintLine("Muting Biamp: Instance {0} Channel {1}", instance, room_index);
-                if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][RM0{room_index}][1]}}\n");
+                //if (biamp.isConnected() || true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][RM0{room_index}][1]}}\n");
             } else {
                 biampMute.SetMuteOff();
                 if (emsDebugState) CrestronConsole.PrintLine("UnMuting Biamp: Instance {0} Channel {1}", instance, room_index);
-                if (biamp.isConnected() == true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][RM0{room_index}][0]}}\n");
+                //if (biamp.isConnected() == true) EMS_Modules.TCP_Server_Send($"{{[ACK][Mute][RM0{room_index}][0]}}\n");
             }
         }
 
