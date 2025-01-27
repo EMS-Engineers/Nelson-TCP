@@ -18,8 +18,12 @@ namespace New_John_EMS_Library {
     public delegate void tcpDataSend(string data);
     public delegate void debugHandler(string data);
     public delegate void cameraControl(string data);
-    public delegate void emsToCrestronStatusRequest(List<string> data);
+    public delegate void emsToCrestronStatusRequest(List<string> data, bool privacy);
+    public delegate void emsToCrestronMuteRequest(List<string> data);
     public delegate void set_Room_States_Handler(string roomID, string value, string type, Boolean all_rooms);
+    public delegate void Update_TouchPanel_Status_FB_Handler(int roomID);
+    //public delegate void Update_TouchPanel_Mute_FB_Handler(int roomID);
+
 
     public static class EMS_Modules {
 
@@ -36,8 +40,13 @@ namespace New_John_EMS_Library {
 
         static double DURATION;
 
-        public static event emsToCrestronStatusRequest EmsToCrestronStatus;
+        // EMS Request Events
+        //public static event emsToCrestronStatusRequest EmsRequestStatPrivEvent;
+        public static event emsToCrestronMuteRequest EmsRequestMuteEvent;
         public static event set_Room_States_Handler Set_Room_States_Event;
+        public static event Update_TouchPanel_Status_FB_Handler Update_TouchPanel_FeedBack_Status;
+        //public static event Update_TouchPanel_Mute_FB_Handler Update_TouchPanel_FeedBack_Mute;
+
 
         public static event messagePlayerHandler Message_Play;
         public static event messagePlayerHandler Message_Record;
@@ -78,8 +87,8 @@ namespace New_John_EMS_Library {
                //Putty automatically creates a \r\n.  SO, think should test everything without Putty first.  Then come back to this with actual SW team.
                //MAYBE?  Cause TCP code is tied in so not sure yet.
 
-            // Regex below handles \n macOS. AND \r\n common in Windows
-            COMMAND_MATCH = $@"\{{(\[.*?\])+(\,(\[.*?\])+)*\}}(\r?\n)";
+            // Regex below handles \n macOS. AND \r\n common in Windows.  AND we handle if neither \n or \r exists
+            COMMAND_MATCH = $@"\{{(\[.*?\])+(\,(\[.*?\])+)*\}}(\r?\n)?";
 
             COMMAND_TYPE = new List<string> { "Camera", "Room", "Paging", "Message", "Request", "ACK" };
             CAMERA_FUNCTION = new List<string> { "Pan", "Tilt", "Zoom", "Position", "Recall", "Save" };
@@ -87,10 +96,11 @@ namespace New_John_EMS_Library {
             PAGING_FUNCTION = new List<string> { "Route", "Zone", "Clear" };
             MESSAGE_FUNCTION = new List<string> { "Play", "Record", "Delete", "Stop" };
             REQUEST_FUNCTION = new List<string> { "Status", "Privacy", "Mute", "Route", "Position", "Ping", "Header" };
-            ACK_FUNCTION = new List<string> { "Pan", "Tilt", "Zoom", "Position", "Recall", "Save", "Status", "Privacy", "Mute", "Ping" };
+            //ACK_FUNCTION = new List<string> { "Pan", "Tilt", "Zoom", "Position", "Recall", "Save", "Status", "Privacy", "Mute", "Ping" };
+            ACK_FUNCTION = new List<string> { "Status", "Privacy", "Mute", "Route", "Position", "Ping"};
             COMMAND_FUNCTION_MAP = new List<List<string>> { CAMERA_FUNCTION, ROOM_FUNCTION, PAGING_FUNCTION, MESSAGE_FUNCTION, REQUEST_FUNCTION, ACK_FUNCTION };
 
-            DURATION = 8;
+            DURATION = 10;
         }
 
         /// <summary>
@@ -112,6 +122,7 @@ namespace New_John_EMS_Library {
                 TCP_Server_Send($"{{[ERR][Incomplete][{ems_rx}]}}\n");
             } else {
                 ems_rx = match.Value;
+                // ems_rx = {[ACK][Status][RM01][1]}
                 // ems_rx = {[Paging][Clear][2][0],[Paging][Clear][2][3,4],[Paging][Route][2][1,2,3,4,5],[Paging][Route][2][0]}
 
                 // Replaces either "\n" or "\r\n"
@@ -305,7 +316,6 @@ namespace New_John_EMS_Library {
                 all_rooms = true;
                 RMID = 0;
             }
-
             if (!data[0].Contains(",")) { // ie [status][data[0] = "RM01"][3]... EMS_Parse passed only part of command to Room_Command at a time.
                                           // ie [status][0][3]
                 switch (command) {
@@ -451,14 +461,23 @@ namespace New_John_EMS_Library {
         public static bool Request_Command(int command, List<string> data) {
             switch (command) {
                 case 0: // Status
-                    EmsToCrestronStatus(data);
+
+                    /*
+                      
+                        -WAIT MAY NOT NEED THIS
+                        
+                        -IF USE IT, NEED TO HANDLE THE RM01 as INPUT, not just the 1.
+                        -SEE HOW HANDLE THAT WITH MUTE BELOW
+
+                    */
+                     
+                    //EmsRequestStatPrivEvent(data, false);
                     return true;
                 case 1: // Privacy
-
+                    //EmsRequestStatPrivEvent(data, true);
                     return true;
-
                 case 2: // Mute
-
+                    EmsRequestMuteEvent(data);
                     return true;
                 case 3: // Route
 
@@ -478,13 +497,36 @@ namespace New_John_EMS_Library {
             switch (command) {
                 case 0: // Status
 
+                    // THINK ACK WILL COME IN TO TCP_Client_Receive_Data.  Then EMS_Parse
+
+                    // We sent: Room Status Commands.  Get back
+                    // {[ACK][Status][RM01][1]} // start rec ack
+                    // {[ACK][Status] [RM01] [3],[ACK] [Status] [RM02] [3]}
+                    // data would be ["RM01" "3"]
+                    // then separate ACK call would be ["RM02" "3"]
+
+                    // Line below could have been request start on all rooms but got back its in privacy mode. 
+                    // {[ACK][Status][RM01][5],[ACK][Status][RM02][5]}
+
+                    // Update our status objects AND highlight buttons. 
+
+                    // Then, think can just call Set_Room_States_Func(three args), to update room state
+                    Set_Room_States_Event(data[0],data[1],"status",false); // last arg always false here
+
+                    // Then, think also call Update_TouchPanel_Feedback.  See commented out fucntion in main code.
+                    // Go get the state we just set and update panel
+                    Update_TouchPanel_FeedBack_Status(int.Parse(data[0].Substring(2)));
+
                     return true;
                 case 1: // Privacy
-
+                    //{[ACK][Privacy][RM01][1]}
+                    //{[ACK][Privacy][RM01][0]}
+                    Set_Room_States_Event(data[0], data[1], "privacy", false); // last arg always false here
+                    Update_TouchPanel_FeedBack_Status(int.Parse(data[0].Substring(2)));
                     return true;
 
                 case 2: // Mute
-
+                    // I DON"T THINK THIS EVER OCCURS. Crestron TP mutes biamp, then gets the ACK FROM THAT.
                     return true;
                 case 3: // Route
 
